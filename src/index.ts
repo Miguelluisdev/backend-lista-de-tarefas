@@ -4,6 +4,9 @@ import express, { Request, Response } from "express"
 import { createTask } from "./routes/create-task"
 import { deleteTaskById } from "./routes/delete-task-by-id"
 import { getTasks } from "./routes/get-tasks"
+import { getTaskById } from "./routes/get-tasks-by-id"
+
+import { reorderTasks } from "./routes/reorder-tasks"
 import { updateTask } from "./routes/upload-task-by-id"
 
 const prisma = new PrismaClient()
@@ -13,7 +16,7 @@ app.use(express.json())
 app.use(
   cors({
     origin: (origin, callback) => {
-      const allowedOrigins = ["https://lista-de-tarefas-nine-eosin.vercel.app"]
+      const allowedOrigins = ["http://localhost:3000"]
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true)
       } else {
@@ -31,6 +34,8 @@ app.get("/", (req: Request, res: Response) => {
 
 // rotas
 app.get("/tasks", getTasks)
+app.get("/tasks/:id", getTaskById)
+app.post("/tasks/reorder", reorderTasks)
 app.post("/create-tasks", createTask)
 app.put("/upload/:id", updateTask)
 app.delete("/delete/:id", deleteTaskById)

@@ -12,5 +12,5 @@ model Tasks {
   name      String   @unique
   cost      Float
   limitDate DateTime
-  order     Int      @unique 
+  order     Int     
 }
