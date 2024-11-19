@@ -16,7 +16,7 @@ app.use(express.json())
 app.use(
   cors({
     origin: (origin, callback) => {
-      const allowedOrigins = ["https://lista-de-tarefas-nine-eosin.vercel.app/"]
+      const allowedOrigins = ["https://lista-de-tarefas-nine-eosin.vercel.app"]
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true)
       } else {
