@@ -16,7 +16,7 @@ app.use(express.json())
 app.use(
   cors({
     origin: (origin, callback) => {
-      const allowedOrigins = ["http://localhost:3000"]
+      const allowedOrigins = ["https://lista-de-tarefas-nine-eosin.vercel.app/"]
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true)
       } else {
@@ -32,7 +32,7 @@ app.get("/", (req: Request, res: Response) => {
   res.send("API funcionando")
 })
 
-// rotas
+// rotas alterar no front depois para https://backend-oyy1.onrender.com
 app.get("/tasks", getTasks)
 app.get("/tasks/:id", getTaskById)
 app.post("/tasks/reorder", reorderTasks)
